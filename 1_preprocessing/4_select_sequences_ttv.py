@@ -1,3 +1,9 @@
+# The original volumetric data, and thus the .png data we used, did not have the same dimensions
+# i.e. the subjects' heads were not split in the same number of slices,
+# and said slices did not have the same dimensions.
+
+
+
 import shutil
 from os import walk, path
 

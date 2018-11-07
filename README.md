@@ -75,8 +75,32 @@ Comparison of the two cases above (i.e. with and without dropout). The error ban
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/drop_comparison_4.png)
 
-#### Comparison of the best cases in experiments III and IV.
+#### Comparison of the best cases in experiments III and IV
 
 The best case for experiment III was the one that didn't use dropout, while the best for IV had a 25% dropout probability. The eight models from these two cases can be seen below. The error bands span from the best to the worst model in each of the two cases, while their mean is represented by a thicker line.
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/best_iii_iv.png)
+
+### ResNet generalization
+
+These results involved evaluating the best models from the validation set on a hold-out test set.
+
+#### I. Baseline
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/resnet_evaluation/figures/i.png)
+
+#### II. Traditional augmentation
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/resnet_evaluation/figures/ii.png)
+
+#### III. GAN augmentation
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/resnet_evaluation/figures/iii.png)
+
+#### IV. Both forms of augmentation
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/resnet_evaluation/figures/iv.png)
+
+#### Comparison of the best models from all 4 experiments
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/resnet_evaluation/figures/comparative.png)

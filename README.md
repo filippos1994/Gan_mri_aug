@@ -34,3 +34,49 @@ GAN trained on the AD subset
 GAN trained on the NC subset
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/gan_plots/figures/nc_loss.png)
+
+### ResNet runtime metrics
+
+During training, at the end of each epoch, the models were evaluated on a hold-out validation set. The figures below depict the validation accuracy of each of the models, during training.
+
+#### I. Baseline
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/baseline.png)
+
+#### II. Traditional augmentation
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/augment.png)
+
+#### III. GAN augmentation
+
+Models trained on a GAN-augmented dataset with 8 different fake/real image ratios. All 8 experiments are run with **no dropout**. 
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/gan_noaug_0dr.png)
+
+Same 8 runs, all trained with a **25% dropout probability**.
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/gan_noaug_25dr.png)
+
+Comparison of the two cases above (i.e. with and without dropout). The error bands span from the best to the worst model in each of the two cases, while their mean is represented by a thicker line.
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/gan_noaug.png)
+
+#### IV. Both forms of augmentation
+
+Models trained on a GAN-augmented dataset with the addition of traditional augmentation techniques. The same 8 fake/real iamge ratios were examined, the *augmentation strength* is set to 25% and **no dropout** is used for any of the runs. 
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/gan_aug_0dr.png)
+
+Same 8 runs, all trained with a **25% dropout probability**.
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/gan_aug_25dr.png)
+
+Comparison of the two cases above (i.e. with and without dropout). The error bands span from the best to the worst model in each of the two cases, while their mean is represented by a thicker line.
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/drop_comparison_4.png)
+
+#### Comparison of the best cases in experiments III and IV.
+
+The best case for experiment III was the one that didn't use dropout, while the best for IV had a 25% dropout probability. The eight models from these two cases can be seen below. The error bands span from the best to the worst model in each of the two cases, while their mean is represented by a thicker line.
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/best_iii_iv.png)

@@ -1,8 +1,8 @@
-# The original volumetric data, and thus the .png data we used, did not have the same dimensions
-# i.e. the subjects' heads were not split in the same number of slices,
-# and said slices did not have the same dimensions.
-
-
+# The effects of AD are visible mostly on the middle part of the head, with the lower and upper portions being irrelevant.
+# With that in mind, we empirically chose some thresholds and only kept the relevant middle parts (from the ~45 percentile slice to the ~80 percentile slice).
+# However, the original volumetric data, and thus the .png data we used, did not have the same dimensions
+# i.e. the subjects' heads were not split in the same number of slices, and said slices did not have the same dimensions.
+# So, if the visit had 192 slices, only slices 92-140 were kept, etc.
 
 import shutil
 from os import walk, path

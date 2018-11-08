@@ -440,12 +440,12 @@ for epoch in range(EPOCHS):
 
     if (epoch + 1) < 300:
         if (epoch + 1)%50 == 0:
-            generator.save(weights_dir + 'generator_{}_newd_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
+            generator.save(weights_dir + 'generator_{}_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
     elif (epoch + 1) < 600:
         if (epoch + 1)% 5 == 0:
-            generator.save(weights_dir + 'generator_{}_newd_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
+            generator.save(weights_dir + 'generator_{}_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
     else:
         if (epoch + 1)%50 == 0:
-            generator.save(weights_dir + 'generator_{}_newd_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
+            generator.save(weights_dir + 'generator_{}_{}_{}_{}.h5'.format(TYPE, BATCH_SIZE, LATENT_SIZE, (epoch + 1)))
 
 

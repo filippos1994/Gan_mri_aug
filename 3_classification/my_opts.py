@@ -6,7 +6,7 @@ import keras.backend as K
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--data_dir', type=str, default='/data/data1/users/fkonid/data_gan_adnorfirst/', help='directory where data are located')
+parser.add_argument('--data_dir', type=str, default='data_gan_adnorfirst', help='directory where data are located')
 parser.add_argument('--target_size', type=int, default=(192, 160), help='image dimensions')
 parser.add_argument('--weights_dir', type=str, default=None, help='where to store weights')
 parser.add_argument('--log_dir', type=str, default='logs', help='where to store tensorboard logs')

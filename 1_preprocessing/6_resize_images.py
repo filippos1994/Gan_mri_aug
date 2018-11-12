@@ -1,3 +1,5 @@
+# Resize all images underneath directory 'data' to (160, 192), through Lanczos resampling.
+
 import numpy as np
 
 from os import path, walk

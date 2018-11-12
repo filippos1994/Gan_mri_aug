@@ -42,7 +42,7 @@ After the dataset is downloaded, run:
 - 3_nii_to_png_all.py, to transform the .nii volumetric data to axial .png MRI images
 - 4_check_shapes.ipynb (optional) to find the number of different slices and dimensions of each visit's corresponding images
 - 5_select_sequences_ttv.py, to throw away the images corresponding to the irrelevant parts of a subject's head, as far as AD diagnosis is concerned
-
+- 6_resize_images.py, to resize all the images to a single size (192,160)
 ## 2. GAN Models
 
 Two identical GANs were trained, one per class, following the Wasserstein GAN framework.
@@ -61,7 +61,16 @@ The discriminator is a regular CNN architecture aimed towards binary classificat
 
 The input of the discriminator is a single-channel 192 × 160 image, which is then passed five times through alternating convolutional layers with a stride of 1 and 2 respectively; the latter are used for sub-sampling, instead of pooling layers. The final two layers are FC ones. All layers are activated by a Leaky ReLU function, besides the last one, which has no activation function.
 
-Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array. 
+The GAN training script is wgan_bs_32_lat_128_eps_600.py. Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array. The optimal weights are {TODO}
+
+## 3. Classification
+
+After the GANs have been trained, we use 8 different fake to real ratios to train a Resnet-18 model.
+
+- Use generate_imgs.py from Chapter 2 to generate the fake dataset. 
+- Use permutations.py to randomly select which images are used on the 8 different training datasets.
+- Use {statistika}.py to only calculate once each dataset's statistical features.
+- Run train_resnet18.py to train the resnet
 
 ## 5. Results
 

@@ -23,6 +23,26 @@ Abstract:
   - GAN evaluation
   - Classification experiments
 
+## 1. Preprocessing
+
+To download the dataset:
+
+- Visit https://ida.loni.usc.edu/login.jsp?project=ADNI&page=HOME# and click on SEARCH (you will have to sign up)
+- Click on Advanced Image Search (beta)
+- On the Search Options menu, select Original on the IMAGE TYPES sub-menu
+- On the Search Criteria menu, select MRI on the IMAGE sub-menu. Then, on the IMAGING PROTOCOL sub-menu, select T1 on Weighting
+- CAUTION! Even though the experiments were performed on axial MRI data, do not select AXIAL on the Aquisition Plane, since most of the original data are volumetric .nii files)
+- To download the AD (Alzheimer's Disease) subjects, on the Search Options menu, select Subject on the Search Sections sub-menu, and on the Search Criteria menu, select AD on the subject sub-menu. The same holds for CN (Control Normal) subjects.
+- Of all the downloaded data, select the "MPR; GradWarp; B1 Correction; N3; Scaled" ones.
+
+After the dataset is downloaded, run:
+
+- 1_ttv_split.py, in order to randomly split the patients on training, validation and test sets
+- 2_subjects_lists.py (optional), to log which subject is on which set
+- 3_nii_to_png_all.py, to transform the .nii volumetric data to axial .png MRI images
+- 4_check_shapes.ipynb (optional) to find the number of different slices and dimensions of each visit's corresponding images
+- 5_select_sequences_ttv.py, to throw away the images corresponding to the irrelevant parts of a subject's head, as far as AD diagnosis is concerned
+
 ## 5. Results
 
 ### GAN training loss

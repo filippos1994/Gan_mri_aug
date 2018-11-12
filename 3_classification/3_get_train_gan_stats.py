@@ -7,7 +7,7 @@ from PIL import Image
 from os import path, walk
 
 for i in range(1,9):
-	ratio = i*25
+	ratio = i * 25
 	if ratio < 100:
 		ratio_str = '0' + str(ratio)
 	else:
@@ -38,14 +38,7 @@ for i in range(1,9):
 	print(mean, std)
 
 	stats_path = 'stats_train/stats_{}.txt'.format(ratio_str)
-	try:
-		stats_file = open(stats_path, 'w')
-	except IOError:
-		# If not exists, create the file
-		stats_file = open(stats_path, 'w+')
-
-	stats_file.write(str(mean) + '\n')
-	stats_file.write(str(std) + '\n')
-
-	stats_file.close()
-# print(type(mean), type(std))
+	
+	with open(stats_path, 'w') as stats_file:
+		stats_file.write(str(mean) + '\n')
+		stats_file.write(str(std) + '\n')

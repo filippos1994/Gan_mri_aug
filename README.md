@@ -49,10 +49,9 @@ Two identical GANs were trained, one per class.
 
 ### Generator
 
-The input of the generator is a vector of 128 random values in the [0, 1) range, sampled from a uniform distribution. Following the input is a Fully Connected (FC) layer with  6 · 5 · 512 = 15360 neurons. The output of the FC layer is then transformed into a 3D volume, which can be thought of as a 6 × 5 image with 512 channels. The subsequent layers are regular 2D convolutions and 2D transposed convolutions, also referred to as "deconvolution" layers. A 5 × 5 kernel and zero padding were used for both types of layers, while a stride of 2 was used for the deconvolutions. This results in the doubling of the spatial dimensions of its input.
-All layers apart from the last are activated by a "Leaky ReLU" function. The final layer has a hyperbolic tangent (tanh) activation function, as its output needs to be bounded in order to output an image.
+The input of the generator is a vector of 128 random values in the [0, 1) range, sampled from a uniform distribution. Following the input is a Fully Connected (FC) layer with  6 · 5 · 512 = 15360 neurons. The output of the FC layer is then transformed into a 3D volume, which can be thought of as a 6 × 5 image with 512 channels. The subsequent layers are regular 2D convolutions and 2D transposed convolutions. A 5 × 5 kernel and zero padding were used for both types of layers, while a stride of 2 was used for the transposed convolutions. This results in the doubling of the spatial dimensions of its input. All layers apart from the last are activated by the Leaky ReLU function. The final layer has a hyperbolic tangent (tanh) activation function, as its output needs to be bounded in order to output an image.
 
-Finally, after five alternations of convolution and transposed convolution layers (each of which doubles the size of its input), an image with a resolution of $(6 \cdot 2^5 \times 5 \cdot 2^5) = (192 \times 160)$ and $1$ channel is produced.
+Finally, after five alternations of convolution and transposed convolution layers (each of which doubles the size of its input), an image with a resolution of 6 · 2^5 × 5 · 2^5 = 192 × 160 and 1 channel is produced.
 
 
 Because of limitations that Keras put on model creation, the training data must be stored on a single Numpy array. 

@@ -45,14 +45,21 @@ After the dataset is downloaded, run:
 
 ## 2. GAN Models
 
-Two identical GANs were trained, one per class. 
+Two identical GANs were trained, one per class, following the Wasserstein GAN framework.
 
 ### Generator
+
+An architecture with 11 layers and more than 15 million trainable parameters was selected as the generator of the network.
 
 The input of the generator is a vector of 128 random values in the [0, 1) range, sampled from a uniform distribution. Following the input is a Fully Connected (FC) layer with  6 · 5 · 512 = 15360 neurons. The output of the FC layer is then transformed into a 3D volume, which can be thought of as a 6 × 5 image with 512 channels. The subsequent layers are regular 2D convolutions and 2D transposed convolutions. A 5 × 5 kernel and zero padding were used for both types of layers, while a stride of 2 was used for the transposed convolutions. This results in the doubling of the spatial dimensions of its input. All layers apart from the last are activated by the Leaky ReLU function. The final layer has a hyperbolic tangent (tanh) activation function, as its output needs to be bounded in order to output an image.
 
 Finally, after five alternations of convolution and transposed convolution layers (each of which doubles the size of its input), an image with a resolution of 6 · 2^5 × 5 · 2^5 = 192 × 160 and 1 channel is produced.
 
+### Discriminator
+
+The discriminator is a regular CNN architecture aimed towards binary classification. The one used in the present study consists of 11 layers and around 9.5 million trainable parameters.
+
+The input of the discriminator is a single-channel 192 × 160 image, which is then passed five times through alternating convolutional layers with a stride of 1 and 2 respectively; the latter are used for sub-sampling, instead of pooling layers. The final two layers are FC ones. All layers are activated by a Leaky ReLU function, besides the last one, which has no activation function.
 
 Because of limitations that Keras put on model creation, the training data must be stored on a single Numpy array. 
 

@@ -32,8 +32,9 @@ To download the dataset:
 - On the Search Options menu, select Original on the IMAGE TYPES sub-menu
 - On the Search Criteria menu, select MRI on the IMAGE sub-menu. Then, on the IMAGING PROTOCOL sub-menu, select T1 on Weighting
 - CAUTION! Even though the experiments were performed on axial MRI data, do not select AXIAL on the Aquisition Plane, since most of the original data are volumetric .nii files)
-- To download the AD (Alzheimer's Disease) subjects, on the Search Options menu, select Subject on the Search Sections sub-menu, and on the Search Criteria menu, select AD on the subject sub-menu. The same holds for CN (Control Normal) subjects.
+- To download the AD (Alzheimer's Disease) subjects, on the Search Options menu, select Subject on the Search Sections sub-menu, and on the Search Criteria menu, select AD on the subject sub-menu. The same holds for NC (Normal Control) subjects.
 - Of all the downloaded data, select the "MPR; GradWarp; B1 Correction; N3; Scaled" ones.
+- For compatibility, store images downloaded for AD subjects to a directory named 'ad' and images from NC subjects to a directory called 'nor'.
 
 After the dataset is downloaded, run:
 
@@ -43,6 +44,7 @@ After the dataset is downloaded, run:
 - 4_check_shapes.ipynb (optional) to find the number of different slices and dimensions of each visit's corresponding images
 - 5_select_sequences_ttv.py, to throw away the images corresponding to the irrelevant parts of a subject's head, as far as AD diagnosis is concerned
 - 6_resize_images.py, to resize all the images to a single size (192,160)
+
 ## 2. GAN Models
 
 Two identical GANs were trained, one per class, following the Wasserstein GAN framework.

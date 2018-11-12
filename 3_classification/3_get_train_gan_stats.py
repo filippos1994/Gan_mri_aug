@@ -1,9 +1,12 @@
+# Calculate the statistical features once,
+# use them anytime
+
 import numpy as np
 
 from PIL import Image
 from os import path, walk
 
-for i in range(6,9):
+for i in range(1,9):
 	ratio = i*25
 	if ratio < 100:
 		ratio_str = '0' + str(ratio)

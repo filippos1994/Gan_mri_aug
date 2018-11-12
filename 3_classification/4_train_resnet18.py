@@ -1,3 +1,5 @@
+# main classification script
+
 import keras
 #import matplotlib.image as mpimg
 import numpy as np

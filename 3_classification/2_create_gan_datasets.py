@@ -1,3 +1,6 @@
+# After the images of each dataset have been decided
+# we run this script to copy them
+
 from distutils.dir_util import copy_tree
 from shutil import copy2
 

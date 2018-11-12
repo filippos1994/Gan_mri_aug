@@ -61,7 +61,7 @@ The discriminator is a regular CNN architecture aimed towards binary classificat
 
 The input of the discriminator is a single-channel 192 × 160 image, which is then passed five times through alternating convolutional layers with a stride of 1 and 2 respectively; the latter are used for sub-sampling, instead of pooling layers. The final two layers are FC ones. All layers are activated by a Leaky ReLU function, besides the last one, which has no activation function.
 
-Because of limitations that Keras put on model creation, the training data must be stored on a single Numpy array. 
+Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array. 
 
 ## 5. Results
 

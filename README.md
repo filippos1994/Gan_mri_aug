@@ -68,9 +68,10 @@ The GAN training script is wgan_bs_32_lat_128_eps_600.py. Because of limitations
 After the GANs have been trained, we use 8 different fake to real ratios to train a Resnet-18 model.
 
 - Use generate_imgs.py from Chapter 2 to generate the fake dataset. 
-- Use permutations.py to randomly select which images are used on the 8 different training datasets.
-- Use {statistika}.py to only calculate once each dataset's statistical features.
-- Run train_resnet18.py to train the resnet
+- Use 1_permutations.py to randomly select which images are used on the 8 different training datasets.
+- Use 2_create_gan_datasets.py to actually copy the images on the corresponding datasets.
+- Use 3_get_train_gan_stats.py to only calculate once each dataset's statistical features.
+- Run 4_train_resnet18.py to train the resnet
 
 ## 5. Results
 

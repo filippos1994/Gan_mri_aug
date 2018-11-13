@@ -13,7 +13,6 @@ train_dir = path.join(split_dir, "train")
 test_dir  = path.join(split_dir, "test")
 valid_dir = path.join(split_dir, "valid")
 
-#patients = [os.path.join(nii_dir, x) for x in listdir(nii_dir)]
 patients = listdir(nii_dir)
 
 for patient in patients:

@@ -4,7 +4,7 @@
 from distutils.dir_util import copy_tree
 from shutil import copy2
 
-data_dir  = '/data/data1/users/fkonid/data_gan_adnorfirst/'
+data_dir  = 'data_gan_adnorfirst/'
 gan_dir   = data_dir + 'gan/'
 train_src = data_dir + 'train/'
 

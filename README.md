@@ -53,7 +53,7 @@ Two identical GANs were trained, one per class, following the Wasserstein GAN fr
 
 An architecture with 11 layers and more than 15 million trainable parameters was selected as the generator of the network.
 
-The input of the generator is a vector of 128 random values in the [0, 1) range, sampled from a uniform distribution. Following the input is a Fully Connected (FC) layer with  6 · 5 · 512 = 15360 neurons. The output of the FC layer is then transformed into a 3D volume, which can be thought of as a 6 × 5 image with 512 channels. The subsequent layers are regular 2D convolutions and 2D transposed convolutions. A 5 × 5 kernel and zero padding were used for both types of layers, while a stride of 2 was used for the transposed convolutions. This results in the doubling of the spatial dimensions of its input. All layers apart from the last are activated by the Leaky ReLU function. The final layer has a hyperbolic tangent (tanh) activation function, as its output needs to be bounded in order to output an image.
+The input of the generator is a vector of 128 random values in the \[0, 1) range, sampled from a uniform distribution. Following the input is a Fully Connected (FC) layer with  6 · 5 · 512 = 15360 neurons. The output of the FC layer is then transformed into a 3D volume, which can be thought of as a 6 × 5 image with 512 channels. The subsequent layers are regular 2D convolutions and 2D transposed convolutions. A 5 × 5 kernel and zero padding were used for both types of layers, while a stride of 2 was used for the transposed convolutions. This results in the doubling of the spatial dimensions of its input. All layers apart from the last are activated by the Leaky ReLU function. The final layer has a hyperbolic tangent (tanh) activation function, as its output needs to be bounded in order to output an image.
 
 Finally, after five alternations of convolution and transposed convolution layers (each of which doubles the size of its input), an image with a resolution of 6 · 2^5 × 5 · 2^5 = 192 × 160 and 1 channel is produced.
 
@@ -63,7 +63,23 @@ The discriminator is a regular CNN architecture aimed towards binary classificat
 
 The input of the discriminator is a single-channel 192 × 160 image, which is then passed five times through alternating convolutional layers with a stride of 1 and 2 respectively; the latter are used for sub-sampling, instead of pooling layers. The final two layers are FC ones. All layers are activated by a Leaky ReLU function, besides the last one, which has no activation function.
 
-The GAN training script is wgan_bs_32_lat_128_eps_600.py. Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array. The optimal weights are {TODO}
+### Usage
+
+- The GAN training script is wgan_bs_32_lat_128_eps_600.py. Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array.
+
+- The optimal weights for the generators of both models (i.e. the one trained on the AD subset and the other on the NC subset) are stored at 2_gan_models/weights/.
+
+- Both models are capable of generating high-quality realistic images of AD/NC subjects respectively. A few sample images can be seen below.
+
+Model trained on the AD subset:
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/2_gan_models/sample_images/gan_images_ad.png)
+
+Model trained on the NC subset:
+
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/2_gan_models/sample_images/gan_images_nor.png)
+
+- This can be further validated through knn_gan.ipynb, which selects a generated image at random and searches the original training set to find its closest through a knn algorithm. This can confirm that the model can produce high-quality relistic images and does not memorize the training set.  
 
 ## 3. Classification
 
@@ -75,7 +91,7 @@ After the GANs have been trained, we use 8 different fake to real ratios to trai
 - Use 3_get_train_gan_stats.py to only calculate once each dataset's statistical features.
 - Run 4_train_resnet18.py to train the resnet
 
-## 5. Results
+## 4. Losses and Runtime Metrics
 
 ### GAN training loss
 
@@ -133,7 +149,7 @@ The best case for experiment III was the one that didn't use dropout, while the 
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/resnet_logs/runtime_metrics/figures/best_iii_iv.png)
 
-### ResNet generalization
+## 5. Results: ResNet generalization
 
 These results involved evaluating the best models from the validation set on a hold-out test set.
 

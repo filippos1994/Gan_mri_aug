@@ -8,24 +8,37 @@ Abstract:
 
 ## Repository structure:
 
-1. Preprocessing
+1. **Preprocessing**
     - Python scripts that divide the subjects into training-validation-test sets, convert volumetric nifty images to 2D .png, resize them and drop their first and last frames (i.e. frames containing background and useless parts of the brain).   
-2. GAN models
+2. **GAN models**
     - GAN architecture and training script.
     - Weights.
-3. Classification
+3. **Classification**
     - Script that combines GAN-generated images with real ones, at different ratios, to create new augmented images for the subsequent experiments.  
     - ResNet18 architecture and training scripts.
-4. Logs
+4. **Logs**
     - GAN training losses.
     - Classification experiments.
       - TensorBoard logs.
       - Runtime metrics.
-5. Results
+5. **Results**
     - GAN evaluation.
       - Sample AD and NC images generated from GANs.
       - A notebook for empirically evaluating the generated images through a k-NN model.
     - Classification experiments.
+
+## Requirements
+
+All scripts were either run with a python3 interpreter or on a Jupyter notebook with a python3 kernel.
+
+- numpy (1.13.3)
+- pandas (0.20.3)
+- matplotlib (2.0.2)
+- seaborn (0.8.1)
+- tensorflow (1.4.1)
+- keras (2.1.2).
+- scikit-learn (0.19.0) -> Required for the empirical evaluation of GAN-generated images through a k-NN model.
+- nibabel (2.2.1) -> Used for reading the volumetric nifty images (*.nii*). 
 
 ## 1. Preprocessing
 

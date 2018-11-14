@@ -103,6 +103,10 @@ GAN trained on the NC subset
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/4_logs_plots/gan_plots/figures/nc_loss.png)
 
+### ResNet TensorBoard logs
+
+The TensorBoard training logs for the ResNet models stored under [4_logs_plots/resnet_logs/tensorboard_logs](https://github.com/filippos1994/Gan_mri_aug/tree/master/4_logs_plots/resnet_logs/tensorboard_logs). The identifier *dr_x* signies the probability of dropout (e.g. *dr_25* refers to a dropout probability of 25%). The identifier *x_f2r* refers to the ratio of fake to real images, in expreiments containing gan-augmented data (e.g. the logs for an experiment with a 75% fake-to-real image ratio would have the identifier *075_f2r*). 
+
 ### ResNet runtime metrics
 
 During training, at the end of each epoch, the models were evaluated on a hold-out validation set. The figures below depict the validation accuracy of each of the models, during training.

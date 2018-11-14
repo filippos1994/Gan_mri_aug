@@ -42,12 +42,12 @@ To download the dataset:
 
 After the dataset is downloaded, run:
 
-- 1_ttv_split.py, in order to randomly split the patients on training, validation and test sets
-- 2_subjects_lists.py (optional), to log which subject is on which set
-- 3_nii_to_png_all.py, to transform the .nii volumetric data to axial .png MRI images
-- 4_check_shapes.ipynb (optional) to find the number of different slices and dimensions of each visit's corresponding images
-- 5_select_sequences_ttv.py, to throw away the images corresponding to the irrelevant parts of a subject's head, as far as AD diagnosis is concerned
-- 6_resize_images.py, to resize all the images to a single size (192,160)
+- `1_ttv_split.py`, in order to randomly split the patients on training, validation and test sets
+- `2_subjects_lists.py` (optional), to log which subject is on which set
+- `3_nii_to_png_all.py`, to transform the *.nii* volumetric data to axial *.png* MRI images
+- `4_check_shapes.ipynb` (optional) to find the number of different slices and dimensions of each visit's corresponding images
+- `5_select_sequences_ttv.py`, to throw away the images corresponding to the irrelevant parts of a subject's head, as far as AD diagnosis is concerned
+- `6_resize_images.py`, to resize all the images to a single size (192,160)
 
 ## 2. GAN Models
 
@@ -69,9 +69,9 @@ The input of the discriminator is a single-channel 192 × 160 image, which is th
 
 ### Usage
 
-- The GAN training script is wgan_bs_32_lat_128_eps_600.py. Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array.
+- The GAN training script is `wgan_bs_32_lat_128_eps_600.py`. Because of limitations that Keras put on model creation, the training data (the ones produced at the end of Chapter 1) must be stored on a single Numpy array.
 
-- The optimal weights for the generators of both models (i.e. the one trained on the AD subset and the other on the NC subset) are stored at 2_gan_models/weights/.
+- The optimal weights for the generators of both models (i.e. the one trained on the AD subset and the other on the NC subset) are stored at `2_gan_models/weights/`.
 
 - Both models are capable of generating high-quality realistic images of AD/NC subjects respectively. A few sample images can be seen below.
 
@@ -83,17 +83,17 @@ Model trained on the NC subset:
 
 ![](https://github.com/filippos1994/Gan_mri_aug/blob/master/2_gan_models/sample_images/gan_images_nor.png)
 
-- This can be further validated through knn_gan.ipynb, which selects a generated image at random and searches the original training set to find its closest through a knn algorithm. This can confirm that the model can produce high-quality relistic images and does not memorize the training set.  
+- This can be further validated through `knn_gan.ipynb`, which selects a generated image at random and searches the original training set to find its closest through a k-NN algorithm. This can confirm that the model can produce high-quality realistic images and does not memorize the training set.
 
 ## 3. Classification
 
-After the GANs have been trained, we use 8 different fake to real ratios to train a Resnet-18 model.
+After the GANs have been trained, we use 8 different fake to real ratios to train a ResNet-18 model.
 
-- Use generate_imgs.py from Chapter 2 to generate the fake dataset. 
-- Use 1_permutations.py to randomly select which images are used on the 8 different training datasets.
-- Use 2_create_gan_datasets.py to actually copy the images on the corresponding datasets.
-- Use 3_get_train_gan_stats.py to only calculate once each dataset's statistical features.
-- Run 4_train_resnet18.py to train the resnet
+- Use `generate_imgs.py` from Chapter 2 to generate the fake dataset. 
+- Use `1_permutations.py` to randomly select which images are used in the 8 different training datasets.
+- Use `2_create_gan_datasets.py` to actually copy the images on the corresponding datasets.
+- Use `3_get_train_gan_stats.py` to only calculate once each dataset's statistical features.
+- Run `4_train_resnet18.py` to train the ResNet.
 
 ## 4. Losses and Runtime Metrics
 
@@ -109,7 +109,7 @@ GAN trained on the NC subset
 
 ### ResNet TensorBoard logs
 
-The TensorBoard training logs for the ResNet models stored under [4_logs_plots/resnet_logs/tensorboard_logs](https://github.com/filippos1994/Gan_mri_aug/tree/master/4_logs_plots/resnet_logs/tensorboard_logs). The identifier *dr_x* signies the probability of dropout (e.g. *dr_25* refers to a dropout probability of 25%). The identifier *x_f2r* refers to the ratio of fake to real images, in expreiments containing gan-augmented data (e.g. the logs for an experiment with a 75% fake-to-real image ratio would have the identifier *075_f2r*). 
+The TensorBoard training logs for the ResNet models stored under [4_logs_plots/resnet_logs/tensorboard_logs](https://github.com/filippos1994/Gan_mri_aug/tree/master/4_logs_plots/resnet_logs/tensorboard_logs). The identifier *dr_x* signifies the probability of dropout (e.g. *dr_25* refers to a dropout probability of 25%). The identifier *x_f2r* refers to the ratio of fake to real images, in experiments containing GAN-augmented data (e.g. the logs for an experiment with a 75% fake-to-real image ratio would have the identifier *075_f2r*).
 
 ### ResNet runtime metrics
 

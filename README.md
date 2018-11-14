@@ -8,20 +8,24 @@ Abstract:
 
 ## Repository structure:
 
-- Preprocessing
-- GAN models
-  - GAN architecture
-  - Weights
-- Classification
-  - ResNet18 architecture
-- Logs
-  - GAN training losses
-  - Classification experiments
-    - TensorBoard logs
-    - Runtime metrics
-- Results
-  - GAN evaluation
-  - Classification experiments
+1. Preprocessing
+    - Python scripts that divide the subjects into training-validation-test sets, convert volumetric nifty images to 2D .png, resize them and drop their first and last frames (i.e. frames containing background and useless parts of the brain).   
+2. GAN models
+    - GAN architecture and training script.
+    - Weights.
+    - Sample generated images.
+    - A notebook for empirically evaluating the generated images, through a k-NN model.
+3. Classification
+    - Script that combines GAN-generated images with real ones, at different ratios, to create new augmented images for the subsequent experiments.  
+    - ResNet18 architecture and training scripts.
+4. Logs
+    - GAN training losses.
+    - Classification experiments.
+      - TensorBoard logs.
+      - Runtime metrics.
+5. Results
+    - GAN evaluation.
+    - Classification experiments.
 
 ## 1. Preprocessing
 

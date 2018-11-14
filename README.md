@@ -13,8 +13,6 @@ Abstract:
 2. GAN models
     - GAN architecture and training script.
     - Weights.
-    - Sample generated images.
-    - A notebook for empirically evaluating the generated images, through a k-NN model.
 3. Classification
     - Script that combines GAN-generated images with real ones, at different ratios, to create new augmented images for the subsequent experiments.  
     - ResNet18 architecture and training scripts.
@@ -25,6 +23,8 @@ Abstract:
       - Runtime metrics.
 5. Results
     - GAN evaluation.
+      - Sample AD and NC images generated from GANs.
+      - A notebook for empirically evaluating the generated images through a k-NN model.
     - Classification experiments.
 
 ## 1. Preprocessing
@@ -77,11 +77,11 @@ The input of the discriminator is a single-channel 192 × 160 image, which is th
 
 Model trained on the AD subset:
 
-![](https://github.com/filippos1994/Gan_mri_aug/blob/master/2_gan_models/sample_images/gan_images_ad.png)
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/gan_evaluation/sample_images/gan_images_ad.png)
 
 Model trained on the NC subset:
 
-![](https://github.com/filippos1994/Gan_mri_aug/blob/master/2_gan_models/sample_images/gan_images_nor.png)
+![](https://github.com/filippos1994/Gan_mri_aug/blob/master/5_results/gan_evaluation/sample_images/gan_images_nor.png)
 
 - This can be further validated through `knn_gan.ipynb`, which selects a generated image at random and searches the original training set to find its closest through a k-NN algorithm. This can confirm that the model can produce high-quality realistic images and does not memorize the training set.
 

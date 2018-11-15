@@ -26,6 +26,9 @@ Abstract:
       - Sample AD and NC images generated from GANs.
       - A notebook for empirically evaluating the generated images through a k-NN model.
     - Classification experiments.
+      - Scripts for evaluating the ResNet-50 models
+      - The final results in csv form
+      - A notebook for creating the figures used in the paper. 
 
 ## Requirements
 
